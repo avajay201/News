@@ -1,8 +1,8 @@
 .search_form{
-    margin-right: 85px;
+    margin-right: 75px;
 }
 
-.search_onput{
+.search_input{
     width: 550px;
 }
 
@@ -13,3 +13,164 @@
 .modal-footer-btn{
     margin-right: 165px;
 }
+
+.errorlist{
+    color: red;
+}
+
+.bi-person-circle{
+    color: white;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.username{
+    color: white;
+    padding-right: 20px;
+    margin: 0px;
+    cursor: pointer;
+}
+
+.shadow-sm{
+    border: 2px solid #d1d1d1;
+}
+/* Share button css start */
+
+/* @import url("https://fonts.googleapis.com/css?family=Roboto:500"); */
+
+.btn-share {
+  --btn-color: #275efe;
+  position: relative;
+  padding: 9px 15px;
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1;
+  color: white;
+  background: none;
+  border: none;
+  outline: none;
+  overflow: hidden;
+  cursor: pointer;
+  filter: drop-shadow(0 2px 8px rgba(39, 94, 254, 0.32));
+  transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.btn-share::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background: var(--btn-color);
+  border-radius: 24px;
+  transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.btn-share .btn-text,
+.btn-share .btn-icon {
+  display: inline-flex;
+  vertical-align: middle;
+  transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.btn-share .btn-text {
+  transition-delay: 0.05s;
+}
+
+.btn-share .btn-icon {
+  margin-left: 8px;
+  transition-delay: 0.1s;
+}
+
+.btn-share .social-icons {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  transform: translateY(-50%);
+}
+
+.btn-share .social-icons li {
+  flex: 1;
+}
+
+.btn-share .social-icons li a {
+  display: inline-flex;
+  vertical-align: middle;
+  transform: translateY(55px);
+  transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.btn-share .social-icons li a:hover {
+  opacity: 0.5;
+}
+
+/* .btn-share:hover::before {
+  transform: scale(1.2);
+} */
+
+.btn-share:hover .btn-text,
+.btn-share:hover .btn-icon {
+  transform: translateY(-55px);
+}
+
+.btn-share:hover .social-icons li a {
+  transform: translateY(0);
+}
+
+.btn-share:hover .social-icons li:nth-child(1) a {
+  transition-delay: 0.15s;
+}
+
+.btn-share:hover .social-icons li:nth-child(2) a {
+  transition-delay: 0.2s;
+}
+
+.btn-share:hover .social-icons li:nth-child(3) a {
+  transition-delay: 0.25s;
+}
+
+/* Share button css end */
+
+/* Like button css start */
+/* Option btn ==>>
+1. https://codepen.io/lerida/pen/yLeydNy
+2. https://codepen.io/animationbro/pen/YzXqzLv
+ */
+
+.button-like {
+    border: 2px solid #0d6efd;;
+    background-color: transparent;
+    text-decoration: none;
+    padding-right: 14px;
+    position: relative;
+    vertical-align: middle;
+    text-align: center;
+    display: inline-block;
+    border-radius: 3rem;
+    color: #8a8a8a;
+    transition: all ease 0.4s;
+}
+
+.button-like span {
+    margin-left: 0.5rem;
+    font-weight: bold;
+    color: #0d6efd;
+}
+
+.liked {
+    background-color: #0d6efd;
+}
+
+.liked-span {
+    color: white!important;
+}
+
+/* Like button css end */
