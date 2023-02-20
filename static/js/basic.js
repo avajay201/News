@@ -50,11 +50,20 @@ $(document).on('click', '.button-like', function(){
                 $($(self).find('span')[1]).css('color', 'white');
             }
             else{
-                $($(self).find('span')[1]).css('color', '0d6efd');
+                $($(self).find('span')[1]).css('color', '#0d6efd');
             }
         }
     })    
 })
+
+// Default liked post ==>>
+if ($('.button-like').hasClass('liked')){
+    $($(this).find('span')[1]).css('color', 'white');
+}
+else{
+    $($(this).find('span')[1]).css('color', '#0d6efd');
+}
+
 
 // Reload ==>>
 function reload(){

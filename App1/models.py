@@ -10,7 +10,13 @@ class Post(models.Model):
     author = models.CharField(max_length=250)
     total_likes = models.IntegerField()
 
+    def __str__(self):
+        return self.title
+
 class PostLike(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name = 'user')
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name = 'post')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
     liked_date = models.DateTimeField(default = datetime.datetime.now())
+
+    # def __str__(self):
+    #     return self.user

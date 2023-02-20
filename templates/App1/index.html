@@ -114,4 +114,17 @@
         <!-- Content end -->
     </div>
 </div>
+<script type="text/javascript">
+    var liked_post_id = "{{liked_post_id}}";
+    liked_post_id = liked_post_id.replace('[', '');
+    liked_post_id = liked_post_id.replace(']', '');
+    liked_post_id = liked_post_id.split(', ');
+    for (ele of $('.button-like')){
+        post_id = $(ele).prev().val();
+        if (liked_post_id.includes(post_id)){
+            $('.button-like').addClass('liked');
+            $($('.button-like').find('span')[1]).css('color', 'white');
+        }
+    }
+</script>
 {% endblock body %}

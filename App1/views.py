@@ -10,6 +10,11 @@ from .models import Post, PostLike
 class Index(View):
     def get(self, request):
         posts = Post.objects.all()
+        user_id = request.user.id
+        liked_post = Post.objects.prefetch_related('postlike_set').filter(postlike__user = user_id)
+        liked_post_id = []
+        for post in liked_post:
+            liked_post_id.append(post.id)
         sign_up_form = Sign_Up_Form()
         sign_in_form = Sign_In_Form()
         return render(request, 'App1/index.html', locals())
@@ -19,7 +24,6 @@ class Index(View):
         user_id = request.POST.get('user_id')
         like_status = request.POST.get('like_status')
         post_data = Post.objects.filter(id = post_id).first()
-        # user = Post.objects.filter(id = user_id).first()
         if like_status == 'plus':
             post_like = PostLike.objects.create(user_id = user_id, post_id = post_id)
             post_like.save()
