@@ -173,4 +173,24 @@
     color: white!important;
 }
 
+/* User not authenticated */
+.button-like-temp {
+  border: 2px solid #0d6efd;;
+  background-color: transparent;
+  text-decoration: none;
+  padding-right: 14px;
+  position: relative;
+  vertical-align: middle;
+  text-align: center;
+  display: inline-block;
+  border-radius: 3rem;
+  color: #8a8a8a;
+  transition: all ease 0.4s;
+}
+
+.button-like-temp span {
+  margin-left: 0.5rem;
+  font-weight: bold;
+  color: #0d6efd;
+}
 /* Like button css end */

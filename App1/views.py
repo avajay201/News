@@ -5,7 +5,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.http import JsonResponse
 from .forms import *
 from django.db.models import Q
-from .models import Post
+from .models import Post, PostLike
 
 class Index(View):
     def get(self, request):
@@ -16,16 +16,22 @@ class Index(View):
     
     def post(self, request):
         post_id = request.POST.get('post_id')
+        user_id = request.POST.get('user_id')
         like_status = request.POST.get('like_status')
-        post = Post.objects.filter(id = post_id).first()
+        post_data = Post.objects.filter(id = post_id).first()
+        # user = Post.objects.filter(id = user_id).first()
         if like_status == 'plus':
-            post.total_likes = post.total_likes + 1
-            post.save()
+            post_like = PostLike.objects.create(user_id = user_id, post_id = post_id)
+            post_like.save()
+            post_data.total_likes = post_data.total_likes + 1
+            post_data.save()
         else:
-            post.total_likes = post.total_likes - 1
-            post.save()
+            post_like = PostLike.objects.filter(user_id = user_id)
+            post_like.delete()
+            post_data.total_likes = post_data.total_likes - 1
+            post_data.save()
         response = {
-            'post_likes': post.total_likes
+            'post_likes': post_data.total_likes
         }
         return JsonResponse(response)
 

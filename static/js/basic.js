@@ -26,6 +26,7 @@ $(function() {
 // Count likes ==>>
 $(document).on('click', '.button-like', function(){
     let post_id = $(this).prev().val();
+    let user_id = $(this).prev().prev().val();
     var like_status = ''
     let self = $(this);
     if ($(this).hasClass('liked')){
@@ -39,6 +40,7 @@ $(document).on('click', '.button-like', function(){
         url: '',
         data: {
             post_id: post_id,
+            user_id: user_id,
             like_status: like_status,
             csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
         },
