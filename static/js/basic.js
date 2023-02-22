@@ -47,10 +47,12 @@ $(document).on('click', '.button-like', function(){
         success: function(response){
             $($(self).find('span')[1]).text(response.post_likes);
             if ($(self).hasClass('liked')){
-                $($(self).find('span')[1]).css('color', 'white');
+                $($(self).find('span')[1]).addClass('liked-span');
+                $($(self).find('span')[0]).addClass('liked-span');
             }
             else{
-                $($(self).find('span')[1]).css('color', '#0d6efd');
+                $($(self).find('span')[0]).removeClass('liked-span');
+                $($(self).find('span')[1]).removeClass('liked-span');
             }
         }
     })    

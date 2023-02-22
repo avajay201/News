@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'App1',
+    'django_social_share',
 ]
 
 MIDDLEWARE = [
@@ -107,6 +108,6 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIAFILES_DIRS = os.path.join(BASE_DIR, 'media')
+MEDIAFILES_DIRS = [os.path.join(BASE_DIR, 'media')]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
