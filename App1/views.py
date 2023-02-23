@@ -5,7 +5,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.http import JsonResponse
 from .forms import *
 from django.db.models import Q
-from .models import Post, PostLike
+from .models import Post, PostLike, Slider_Post
 
 class Index(View):
     def get(self, request):
@@ -17,8 +17,9 @@ class Index(View):
             liked_post_id.append(post.id)
         sign_up_form = Sign_Up_Form()
         sign_in_form = Sign_In_Form()
+        slider_posts = Slider_Post.objects.all()
         return render(request, 'App1/index.html', locals())
-    
+
     def post(self, request):
         post_id = request.POST.get('post_id')
         user_id = request.POST.get('user_id')
@@ -63,7 +64,7 @@ class Sign_Up(View):
                 'errors': form_data.errors
             }
             return JsonResponse(response)
-        
+
 class Sign_In(View):
     def post(self, request):
         form_data = Sign_In_Form(request.POST)

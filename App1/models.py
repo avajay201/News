@@ -19,3 +19,7 @@ class PostLike(models.Model):
     user = models.ForeignKey(User, on_delete = models.CASCADE)
     post = models.ForeignKey(Post, on_delete = models.CASCADE)
     liked_date = models.DateTimeField(default = datetime.datetime.now())
+
+class Slider_Post(models.Model):
+    post = models.ForeignKey(Post, on_delete = models.CASCADE)
+    post_image = models.ImageField(upload_to = 'post', blank = True)
