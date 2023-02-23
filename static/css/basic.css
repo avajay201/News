@@ -1,39 +1,40 @@
-.search_form{
-    margin-right: 75px;
+.search_form {
+  margin-right: 75px;
 }
 
-.search_input{
-    width: 550px;
+.search_input {
+  width: 550px;
 }
 
-.modal-title{
-    margin-left: 195px;
+.modal-title {
+  margin-left: 195px;
 }
 
-.modal-footer-btn{
-    margin-right: 165px;
+.modal-footer-btn {
+  margin-right: 165px;
 }
 
-.errorlist{
-    color: red;
+.errorlist {
+  color: red;
 }
 
-.bi-person-circle{
-    color: white;
-    cursor: pointer;
-    margin-right: 10px;
+.bi-person-circle {
+  color: white;
+  cursor: pointer;
+  margin-right: 10px;
 }
 
-.username{
-    color: white;
-    padding-right: 20px;
-    margin: 0px;
-    cursor: pointer;
+.username {
+  color: white;
+  padding-right: 20px;
+  margin: 0px;
+  cursor: pointer;
 }
 
-.shadow-sm{
-    border: 2px solid #d1d1d1;
+.shadow-sm {
+  border: 2px solid #d1d1d1;
 }
+
 /* Share button css start */
 
 /* @import url("https://fonts.googleapis.com/css?family=Roboto:500"); */
@@ -146,36 +147,38 @@
  */
 
 .button-like {
-    border: 2px solid #0d6efd;;
-    background-color: transparent;
-    text-decoration: none;
-    padding-right: 14px;
-    position: relative;
-    vertical-align: middle;
-    text-align: center;
-    display: inline-block;
-    border-radius: 3rem;
-    /* color: #8a8a8a; */
-    /* transition: all ease 0.4s; */
+  border: 2px solid #0d6efd;
+  ;
+  background-color: transparent;
+  text-decoration: none;
+  padding-right: 14px;
+  position: relative;
+  vertical-align: middle;
+  text-align: center;
+  display: inline-block;
+  border-radius: 3rem;
+  /* color: #8a8a8a; */
+  /* transition: all ease 0.4s; */
 }
 
 .button-like span {
-    margin-left: 0.5rem;
-    font-weight: bold;
-    color: #0d6efd;
+  margin-left: 0.5rem;
+  font-weight: bold;
+  color: #0d6efd;
 }
 
 .liked {
-    background-color: #0d6efd;
+  background-color: #0d6efd;
 }
 
 .liked-span {
-    color: white!important;
+  color: white !important;
 }
 
 /* User not authenticated */
 .button-like-temp {
-  border: 2px solid #0d6efd;;
+  border: 2px solid #0d6efd;
+  ;
   background-color: transparent;
   text-decoration: none;
   padding-right: 14px;
@@ -193,107 +196,115 @@
   font-weight: bold;
   color: #0d6efd;
 }
+
 /* Like button css end */
 
-.share-icon{
-  color:white;
+.share-icon {
+  color: white;
 }
 
-.news_time{
+.news_time {
   font-size: 11px;
 }
 
-.post_link{
+.post_link {
   text-decoration: none;
 }
 
-.post-summary{
-  margin-bottom: 1rem!important;
+.post-summary {
+  margin-bottom: 1rem !important;
   text-align: justify;
 }
 
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1170px;
+  width: 100%;
+  position: relative;
+  margin: 0 auto;
+}
 
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
 
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  text-decoration: none;
+}
 
-    /* Slideshow container */
-    .slideshow-container {
-      max-width: 1000px;
-      position: relative;
-      margin: auto;
-  }
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
 
-  /* Hide the images by default */
-  .mySlides {
-      display: none;
-  }
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
 
-  /* Next & previous buttons */
-  .prev,
-  .next {
-      cursor: pointer;
-      position: absolute;
-      top: 50%;
-      width: auto;
-      margin-top: -22px;
-      padding: 16px;
-      color: white;
-      font-weight: bold;
-      font-size: 18px;
-      transition: 0.6s ease;
-      border-radius: 0 3px 3px 0;
-      user-select: none;
-      text-decoration: none;
-  }
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
 
-  /* Position the "next button" to the right */
-  .next {
-      right: 0;
-      border-radius: 3px 0 0 3px;
-  }
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
 
-  /* On hover, add a black background color with a little bit see-through */
-  .prev:hover,
-  .next:hover {
-      background-color: rgba(0, 0, 0, 0.8);
-  }
+.active,
+.dot:hover {
+  background-color: #717171;
+}
 
-  /* Number text (1/3 etc) */
-  .numbertext {
-      color: #f2f2f2;
-      font-size: 12px;
-      padding: 8px 12px;
-      position: absolute;
-      top: 0;
-  }
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
 
-  /* The dots/bullets/indicators */
-  .dot {
-      cursor: pointer;
-      height: 15px;
-      width: 15px;
-      margin: 0 2px;
-      background-color: #bbb;
-      border-radius: 50%;
-      display: inline-block;
-      transition: background-color 0.6s ease;
-  }
+.slider_img {
+  height: 350px;
+  width: 100%;
+}
 
-  .active,
-  .dot:hover {
-      background-color: #717171;
-  }
-
-  /* Fading animation */
-  .fade {
-      animation-name: fade;
-      animation-duration: 1.5s;
-  }
-
-  .slider_img{
-      height: 350px;
-      width: 1000px;
-  }
-  /* Display slider images */
-  .fade:not(.show) {
+/* Display slider images */
+.fade:not(.show) {
   opacity: unset;
-  }
+}
+
+.nav-link {
+  background-color: hsl(210deg 11% 15%);
+}
+
+.post-img{
+  width: 100%;
+}

@@ -103,3 +103,8 @@ class Logout(View):
 # class Contact_Us(View):
 #     def get(self, request):
 #         return render(request, 'App1/contact-us.html')
+
+class Post_View(View):
+    def get(self, request, id):
+        post_data = Post.objects.filter(id = id).first()
+        return render(request, 'App1/post-view.html', {'post_data': post_data})

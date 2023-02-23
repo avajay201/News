@@ -5,35 +5,7 @@
 {% block body %}
 <div class="container">
     <!-- Slider start -->
-    <!-- <section class="py-5 text-center">
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                {% for slider in slider_posts %}
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{forloop.counter0}}" class="{% if forloop.counter0 == 0 %}active{% else %}{% endif %}"
-                        aria-current="true" aria-label="Slide {{forloop.counter}}"></button>
-                {% endfor %}
-            </div>
-            <div class="carousel-inner">
-                {% for slider in slider_posts %}
-                    <div class="carousel-item active">
-                        <img src="/media/{{slider.post_image}}" height="450" class="d-block w-100" alt="image here">
-                    </div>
-                {% endfor %}
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-    </section> -->
-
-    <div class="slideshow-container">
+    <div class="slideshow-container my-3">
         <!-- Slider images -->
         {% for slider_image in slider_posts %}
             <div class="mySlides fade">
@@ -58,11 +30,11 @@
         {% for post in posts %}
         <div class="col">
             <div class="card shadow-sm">
-                <!-- <a href="{{post.id}}"> -->
-                    <img src="/media/{{post.post_image}}" alt="image here" />
-                <!-- </a> -->
+                <a href="/post-view/{{post.id}}">
+                    <img class="post-img" src="/media/{{post.post_image}}" alt="image here" />
+                </a>
                 <div class="card-body">
-                    <a href="{{post.id}}" class="post_link">
+                    <a href="/post-view/{{post.id}}" class="post_link">
                         <p class="card-text post-summary">{{post.summary}}</p>
                     </a>
                     <div class="d-flex justify-content-between align-items-center">
@@ -106,8 +78,6 @@
                                     </li>
                                 </ul>
                             </button>
-                            <!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
                         </div>
                         <small class="text-muted news_time">{{post.views}} views(Comming Soon)</small>
                     </div>
@@ -121,10 +91,14 @@
 </div>
 <script type="text/javascript">
     // Adding facebook links
-    $('.bi-facebook').parent().attr('href', $('.facebook-this').children().attr('href'));
+    for (ele of $('.bi-facebook')){
+        $(ele).parent().attr('href', $('.facebook-this').children().attr('href') + 'post-view/' + $(ele).parent().parent().parent().parent().parent().find('.post_id').val());
+    }
 
     // Adding whatsapp links
-    $('.bi-whatsapp').parent().attr('href', $('.whatsapp-this').children().attr('href'));
+    for (ele of $('.bi-whatsapp')){
+        $(ele).parent().attr('href', $('.facebook-this').children().attr('href') + 'post-view/' + $(ele).parent().parent().parent().parent().parent().find('.post_id').val());
+    }
 
     // Manage liked or not liked posts
     var liked_post_id = "{{liked_post_id}}";
@@ -145,7 +119,7 @@
     }
 
 
-
+    // Slider control
     let slideIndex = 1;
     showSlides(slideIndex);
 
