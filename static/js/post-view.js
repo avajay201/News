@@ -1,5 +1,6 @@
 // Count likes ==>>
 $(document).on('click', '.button-like', function(){
+    console.log('Requsting...');
     let post_id = $(this).prev().val();
     let user_id = $(this).prev().prev().val();
     var like_status = ''

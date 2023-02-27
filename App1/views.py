@@ -6,12 +6,12 @@ from django.http import JsonResponse
 from .forms import *
 from django.db.models import Q
 from .models import Post, PostLike, Slider_Post
+from django.http import HttpResponse
 
 class Index(View):
     def get(self, request):
         posts = Post.objects.all()
-        user_id = request.user.id
-        liked_post = Post.objects.prefetch_related('postlike_set').filter(postlike__user = user_id)
+        liked_post = Post.objects.prefetch_related('postlike_set').filter(postlike__user = request.user.id)
         liked_post_id = []
         for post in liked_post:
             liked_post_id.append(post.id)
@@ -87,7 +87,11 @@ class Logout(View):
 class Post_View(View):
     def get(self, request, id):
         post_data = Post.objects.filter(id = id).first()
-        return render(request, 'App1/post-view.html', {'post_data': post_data})
+        liked_post = Post.objects.prefetch_related('postlike_set').filter(postlike__user = request.user.id)
+        liked_post_id = []
+        for post in liked_post:
+            liked_post_id.append(post.id)
+        return render(request, 'App1/post-view.html', {'post_data': post_data, 'liked_post_id': liked_post_id})
 
 class Manage_Likes(View):
     def post(self, request):
@@ -95,7 +99,6 @@ class Manage_Likes(View):
         user_id = request.POST.get('user_id')
         like_status = request.POST.get('like_status')
         post_data = Post.objects.filter(id = post_id).first()
-        print('post-id==>>>', post_id, 'user-id==>>', user_id, 'post-data===>>>', post_data)
         if like_status == 'plus':
             post_like = PostLike.objects.create(user_id = user_id, post_id = post_id)
             post_like.save()
@@ -110,3 +113,11 @@ class Manage_Likes(View):
             'post_likes': post_data.total_likes
         }
         return JsonResponse(response)
+
+class Search_Data(View):
+    def get(self, request, query):
+        # search_result = Post.objects.filter(Q(title__contains = query) | Q(summary__contains = query) | Q(content__contains = query))
+        search_result = Post.objects.filter(title__contains = query)
+        # search_result = Post.objects.filter(Q(title__unaccent__icontains = query) | Q(summary__unaccent__icontains = query) | Q(content__unaccent__icontains = query))
+        print(len(search_result), '++++++++++++++')
+        return HttpResponse('Searching...')

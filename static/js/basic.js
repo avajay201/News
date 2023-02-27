@@ -1,5 +1,5 @@
 // Clear sign up fields ==>>
-$('.sign_up_back_btn').on('click', function(){
+$(document).on('click', '.sign_up_back_btn', function(){
     $('#id_username').val('');
     $('#id_password').val('');
     $('#id_email').val('');
@@ -7,7 +7,7 @@ $('.sign_up_back_btn').on('click', function(){
 })
 
 // Clear sign in fields ==>>
-$('.sign_in_back_btn').on('click', function(){
+$(document).on('click', '.sign_in_back_btn', function(){
     $('#login_username').val('');
     $('#login_password').val('');
     $('.errorlist').remove();
@@ -73,7 +73,7 @@ function reload(){
 }
 
 // Sign up ==>>
-$('.sign_up_btn').on('click', function(){
+$(document).on('click', '.sign_up_btn', function(){
     let form_data = $('.sign_up_form').serialize();
     $.ajax({
         type: 'POST',
@@ -104,7 +104,7 @@ $('.sign_up_btn').on('click', function(){
 })
 
 // Sign in ==>>
-$('.sign_in_btn').on('click', function(){
+$(document).on('click', '.sign_in_btn', function(){
     let form_data = $('.sign_in_form').serialize();
     $.ajax({
         type: 'POST',
@@ -134,7 +134,7 @@ $('.sign_in_btn').on('click', function(){
 })
 
 // Logout
-$('#logout').on('click', function(){
+$(document).on('click', '#logout', function(){
     $.ajax({
         type: 'post',
         url: '/logout',
@@ -151,4 +151,16 @@ $('#logout').on('click', function(){
             }
         }
     })
+})
+
+// Search data field checking ==>>
+$(document).on('click', '.data-search', function(){
+    query = $('input[name=query]').val();
+    if (!query){
+        $('input[name=query]').css('border', '2px solid red')
+    }
+    else{
+        $('input[name=query]').css('border', '');
+        $('.search-btn').click();
+    }
 })

@@ -46,20 +46,20 @@
             <a class="nav-link" href="/contact-us">Contact</a> -->
           </li>
         </ul>
-        <form class="d-flex search_form">
+        <form class="d-flex search_form" action="search-data/query" method="get">
           {% csrf_token %}
-          <input class="form-control me-2 search_input" type="search" placeholder="Search news here..."
-            aria-label="Search" />
-          <button type="button" class="btn btn-outline-secondary">
+          <input class="form-control me-2 search_input" name="query" type="search" placeholder="Search news here..."
+          aria-label="Search" />
+          <button type="submit" hidden class="search-btn"></button>
+          <button type="button" class="btn btn-outline-secondary data-search">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
-              viewBox="0 0 16 16">
-              <path
-                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z">
-              </path>
-            </svg>
-            <span class="visually-hidden">Button</span>
-          </button>
-        </form>
+            viewBox="0 0 16 16">
+            <path
+            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z">
+          </path>
+        </svg>
+      </button>
+    </form>
         {% if user.is_authenticated %}
         <p class="username">{{user.username}}</p>
         <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-person-circle"

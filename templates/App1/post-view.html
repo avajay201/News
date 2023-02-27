@@ -17,7 +17,7 @@
         <div class="btn-group">
             {% if user.is_authenticated %}
             <input class="user_id" hidden value="{{user.id}}" />
-            <input class="post_id" hidden value="{{post.id}}" />
+            <input class="post_id" hidden value="{{post_data.id}}" />
             <button class="button button-like mx-2">
                 <i class="fa fa-heart"></i>
                 <span>Like <span class="post_likes">{{post_data.total_likes}}</span></span>
