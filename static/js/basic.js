@@ -37,7 +37,7 @@ $(document).on('click', '.button-like', function(){
     }
     $.ajax({
         type: 'post',
-        url: '',
+        url: '/manage-likes',
         data: {
             post_id: post_id,
             user_id: user_id,

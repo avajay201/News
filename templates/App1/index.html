@@ -9,7 +9,6 @@
         <!-- Slider images -->
         {% for slider_image in slider_posts %}
             <div class="mySlides fade">
-                <div class="numbertext">1 / {{forloop.counter}}</div>
                 <img src="/media/{{slider_image.post_image}}" class="slider_img">
             </div>
         {% endfor %}
@@ -79,7 +78,7 @@
                                 </ul>
                             </button>
                         </div>
-                        <small class="text-muted news_time">{{post.views}} views(Comming Soon)</small>
+                        <small class="text-muted time-views">{{post.views}} views(Comming Soon)</small>
                     </div>
                 </div>
             </div>
@@ -97,7 +96,7 @@
 
     // Adding whatsapp links
     for (ele of $('.bi-whatsapp')){
-        $(ele).parent().attr('href', $('.facebook-this').children().attr('href') + 'post-view/' + $(ele).parent().parent().parent().parent().parent().find('.post_id').val());
+        $(ele).parent().attr('href', $('.whatsapp-this').children().attr('href') + 'post-view/' + $(ele).parent().parent().parent().parent().parent().find('.post_id').val());
     }
 
     // Manage liked or not liked posts

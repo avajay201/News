@@ -20,26 +20,6 @@ class Index(View):
         slider_posts = Slider_Post.objects.all()
         return render(request, 'App1/index.html', locals())
 
-    def post(self, request):
-        post_id = request.POST.get('post_id')
-        user_id = request.POST.get('user_id')
-        like_status = request.POST.get('like_status')
-        post_data = Post.objects.filter(id = post_id).first()
-        if like_status == 'plus':
-            post_like = PostLike.objects.create(user_id = user_id, post_id = post_id)
-            post_like.save()
-            post_data.total_likes = post_data.total_likes + 1
-            post_data.save()
-        else:
-            post_like = PostLike.objects.filter(user_id = user_id)
-            post_like.delete()
-            post_data.total_likes = post_data.total_likes - 1
-            post_data.save()
-        response = {
-            'post_likes': post_data.total_likes
-        }
-        return JsonResponse(response)
-
 class Sign_Up(View):
     def post(self, request):
         form_data = Sign_Up_Form(request.POST)
@@ -108,3 +88,25 @@ class Post_View(View):
     def get(self, request, id):
         post_data = Post.objects.filter(id = id).first()
         return render(request, 'App1/post-view.html', {'post_data': post_data})
+
+class Manage_Likes(View):
+    def post(self, request):
+        post_id = request.POST.get('post_id')
+        user_id = request.POST.get('user_id')
+        like_status = request.POST.get('like_status')
+        post_data = Post.objects.filter(id = post_id).first()
+        print('post-id==>>>', post_id, 'user-id==>>', user_id, 'post-data===>>>', post_data)
+        if like_status == 'plus':
+            post_like = PostLike.objects.create(user_id = user_id, post_id = post_id)
+            post_like.save()
+            post_data.total_likes = post_data.total_likes + 1
+            post_data.save()
+        else:
+            post_like = PostLike.objects.filter(Q(user_id = user_id) & Q(post_id = post_id))
+            post_like.delete()
+            post_data.total_likes = post_data.total_likes - 1
+            post_data.save()
+        response = {
+            'post_likes': post_data.total_likes
+        }
+        return JsonResponse(response)
