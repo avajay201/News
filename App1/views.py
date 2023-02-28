@@ -87,6 +87,8 @@ class Logout(View):
 class Post_View(View):
     def get(self, request, id):
         post_data = Post.objects.filter(id = id).first()
+        post_data.views += 1
+        post_data.save()
         liked_post = Post.objects.prefetch_related('postlike_set').filter(postlike__user = request.user.id)
         liked_post_id = []
         for post in liked_post:
@@ -115,9 +117,12 @@ class Manage_Likes(View):
         return JsonResponse(response)
 
 class Search_Data(View):
-    def get(self, request, query):
-        # search_result = Post.objects.filter(Q(title__contains = query) | Q(summary__contains = query) | Q(content__contains = query))
-        search_result = Post.objects.filter(title__contains = query)
-        # search_result = Post.objects.filter(Q(title__unaccent__icontains = query) | Q(summary__unaccent__icontains = query) | Q(content__unaccent__icontains = query))
-        print(len(search_result), '++++++++++++++')
-        return HttpResponse('Searching...')
+    def post(self, request):
+        query = request.POST.get('query')
+        search_posts = Post.objects.filter(Q(title__contains = query) | Q(summary__contains = query) | Q(content__contains = query))
+        results = len(search_posts)
+        liked_post = Post.objects.prefetch_related('postlike_set').filter(postlike__user = request.user.id)
+        liked_post_id = []
+        for post in liked_post:
+            liked_post_id.append(post.id)
+        return render(request, 'App1/search.html', {'search_posts': search_posts, 'results': results, 'liked_post_id': liked_post_id})

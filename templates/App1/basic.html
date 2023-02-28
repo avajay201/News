@@ -46,7 +46,7 @@
             <a class="nav-link" href="/contact-us">Contact</a> -->
           </li>
         </ul>
-        <form class="d-flex search_form" action="search-data/query" method="get">
+        <form class="d-flex search_form" action="/search-data" method="post">
           {% csrf_token %}
           <input class="form-control me-2 search_input" name="query" type="search" placeholder="Search news here..."
           aria-label="Search" />
