@@ -7,6 +7,7 @@ class Post(models.Model):
     post_image = models.ImageField(upload_to = 'post', blank = True)
     summary = models.TextField(max_length = 5000)
     content = models.TextField(max_length = 10000)
+    image_url = models.URLField(default='')
     publication_date = models.DateTimeField(default = datetime.datetime.now())
     author = models.CharField(max_length = 250)
     total_likes = models.IntegerField()
@@ -22,4 +23,4 @@ class PostLike(models.Model):
 
 class Slider_Post(models.Model):
     post = models.ForeignKey(Post, on_delete = models.CASCADE)
-    post_image = models.ImageField(upload_to = 'post', blank = True)
+    post_slider_image = models.ImageField(upload_to = 'post', blank = True)
