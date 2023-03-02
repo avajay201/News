@@ -7,9 +7,22 @@ from .forms import *
 from django.db.models import Q
 from .models import Post, PostLike, Slider_Post
 from django.http import HttpResponse
+from newsapi import NewsApiClient
+from django.conf import settings
 
 class Index(View):
     def get(self, request):
+        # newsapi = NewsApiClient(api_key = settings.NEWS_API_KEY)
+        # # top_headlines = newsapi.get_top_headlines(q ='bitcoin', sources = 'bbc-news,the-verge', category = 'business', language = 'en', country = 'us')
+        # all_articles = newsapi.get_everything(q='tesla',
+        #                               from_param='2023-02-02',
+        #                               language='en',
+        #                               sort_by='relevancy',)
+
+        # # sources = newsapi.get_sources()
+        # print('top_headlines>>>>>>>>>>>>>>>>>>>', all_articles['status'])
+        # print('top_headlines>>>>>>>>>>>>>>>>>>>', all_articles['totalResults'])
+        # print('top_headlines>>>>>>>>>>>>>>>>>>>', len(all_articles['articles']))
         posts = Post.objects.all()
         liked_post = Post.objects.prefetch_related('postlike_set').filter(postlike__user = request.user.id)
         liked_post_id = []
@@ -126,3 +139,11 @@ class Search_Data(View):
         for post in liked_post:
             liked_post_id.append(post.id)
         return render(request, 'App1/search.html', {'search_posts': search_posts, 'results': results, 'liked_post_id': liked_post_id})
+    
+class News_Data():
+    def get_data(self):
+        newsapi = NewsApiClient(api_key = settings.NEWS_API_KEY)
+        top_headlines = newsapi.get_top_headlines(q ='bitcoin', sources = 'bbc-news,the-verge', category = 'business', language = 'en', country = 'us')
+        print('top_headlines>>>>>>>>>>>>>>>>>>>', top_headlines)
+
+# News_Data.get_data()

@@ -111,3 +111,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIAFILES_DIRS = [os.path.join(BASE_DIR, 'media')]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+NEWS_API_KEY = '3586362b1b4d46cdb10f5bed310ca3b7'
